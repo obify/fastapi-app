@@ -1,0 +1,16 @@
+1. We need Gunicorn for serving request on Heroku so install as below
+pip install gunicorn
+2. Create Requirements file
+pip freeze > requirements.txt
+3. Create Procfile with below command
+web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker app:app
+
+web: is specific to Procfile command convention that will help identify
+the Heroku deployment process to start a web application with the command
+next to it.
+gunicorn is the WSGI server to which we are configuring our application
+to run on, with the following configuration.
+-w 4 indicates that we need our application to run on gunicorn with 4 worker processes.
+-k uvicorn.workers.UvicornWorker tells the gunicorn to run the application using uvicorn.workers.UvicornWorker worker class.
+main:app is our module main where our FastAPI() app is initialized.
+You can also specify the host and port. But Heroku will automatically figure them out
