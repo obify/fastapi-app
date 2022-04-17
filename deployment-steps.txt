@@ -12,5 +12,5 @@ gunicorn is the WSGI server to which we are configuring our application
 to run on, with the following configuration.
 -w 4 indicates that we need our application to run on gunicorn with 4 worker processes.
 -k uvicorn.workers.UvicornWorker tells the gunicorn to run the application using uvicorn.workers.UvicornWorker worker class.
-main:app is our module main where our FastAPI() app is initialized.
+app:app is our module main where our FastAPI() app is initialized.
 You can also specify the host and port. But Heroku will automatically figure them out
